@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 // 리덕스 프로바이더 추가
 import {Provider} from "react-redux"
 // store를 만들기위한 createStore 추가 : redux
+// redux 툴킷을 이용하라는 의미의 줄
 import { createStore } from 'redux';
 // store에 추가할 couner state와 action
 import counter from './modules/counter';
