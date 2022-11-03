@@ -11,6 +11,29 @@ export const decrease = () => ({type:"decrease"})
 // 화살표함수도 동일하게 매개변수의 값을 받아올 수 있다
 export const change = (value) => ({type:"change", payload : value}) // value값 받아오는 객체함수생성
 
+/*
+    thunk를 사용하여 비동기로 실행하는 액션함수를 만들수 있다.
+    thunk의 형식을 사용했기 때문에, 바로 dispatch를 사용하는게 아니라
+    나중에 추가해서 사용할수 있다
+    thunk 사용형태 : export const 함수이름 = () => (dispatch) =>
+*/
+export const increaseAsync = ()=>(dispatch)=>{
+    // dispatch를 실행하기전에 진행할 내용 작성
+    // dispatch를 통해서 액션실행 
+    // : 액션은 매개변수로 들고오지않았기 때문에 객체로 직접입력해주거나
+    // 이미 만들어둔 액션함수를 사용해서 실행
+
+    // 위에 미리 작성한 액션함수를 사용해서 전달
+    setTimeout(()=>{dispatch(increase())}, 1000)
+}
+
+/* Thunk 를 사용해서 비동기 함수인 setTime 사용 */
+export const decreaseAsync = ()=>(dispatch)=>{
+                            // 액션값을 객체로 전달
+    setTimeout(()=>{dispatch(decrease())}, 2000) //{type:decrease} 사용가능
+}
+
+
 // 리듀서 함수 / store만듦
 function counter(state = initalState, action) {
     switch(action.type){
@@ -18,7 +41,7 @@ function counter(state = initalState, action) {
             const num = parseInt(state.changeNum) // 문자를 정수로 바꿔줌
             return{...state,  number : state.number+num};
         case "decrease":
-            return{...state,  number : state.number-num};
+            return{...state,  number : state.number-state.changeNum};
         case "change":                  
             return{...state, changeNum : action.payload}; // action안에서 payload전달
         default : 
