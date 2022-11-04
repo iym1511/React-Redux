@@ -21,8 +21,19 @@ export const counter = createSlice({
     }
 });
 
+
 // 액션 타입을 합수로 만들어서 내보내기
 export const {increment, incrementByAmount} = counter.actions
+
+// toolkit 에는 thunk가 내장되있기때문에 설치하지않고 사용 가능하다
+// thunk 사용하는 방식과 동일하게 사용 : 함수형으로 작성
+// thunk로 작성한 함수의 이름을 액션함수를 사용하는 것과 동일하게 사용 
+// : dispatch(increaseAsync=())
+export const increaseAsync=()=>(dispatch)=>{
+    console.log("확인")
+    setTimeout(()=>{dispatch(increment())},1000)
+}
+
 
 // 디스패치를 따로 내보내줌
 export default counter.reducer
