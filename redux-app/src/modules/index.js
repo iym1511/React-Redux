@@ -5,7 +5,7 @@ import {combineReducers} from "redux";
 import counter, { counterSaga } from "./counter";
 import memo from "./memo";
 import news from "./news";
-import newsSagaReducer,  {newsSaga} from "./newsSaga";
+import newsSagaReducer, {newsSaga} from "./newsSaga";
 
 // 리덕스 사가의 내용을 연결해서 사용
 import {all} from "redux-saga/effects"

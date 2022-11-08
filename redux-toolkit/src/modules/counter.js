@@ -30,7 +30,7 @@ export const {increment, incrementByAmount} = counter.actions
 // thunk로 작성한 함수의 이름을 액션함수를 사용하는 것과 동일하게 사용 
 // : dispatch(increaseAsync=())
 export const increaseAsync=()=>(dispatch)=>{
-    console.log("확인")
+    // counter.actions을 통해 내보내준 increment를 함수형식으로 작성해서 넣어준다
     setTimeout(()=>{dispatch(increment())},1000)
 }
 
